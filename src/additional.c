@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   additional.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelyakou <aelyakou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 00:42:51 by aelyakou          #+#    #+#             */
-/*   Updated: 2022/11/30 00:44:14 by aelyakou         ###   ########.fr       */
+/*   Updated: 2023/02/08 01:13:52 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-float   limit_angles(float ra)
+float	limit_angles(float ra)
 {
-    if(ra > 360)
+	if (ra > 360)
 		ra = ra - 360;
-	if(ra < 0)
+	if (ra < 0)
 		ra = 360 + ra;
-    return (ra);
+	return (ra);
 }

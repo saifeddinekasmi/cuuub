@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/02/05 15:42:11 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/08 01:42:49 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 void	check_line_txt_rgb(char *str, t_map *map)
 {
 	if (str[0] && str[0] == 'C')
-		ft_check_color2(str);
+		ft_check_color2(str, map);
 	else if (str[0] && str[0] == 'F')
-		ft_check_color(str);
+		ft_check_color(str, map);
 	else if (str[0] && str[0] == 'S')
 		ft_check_txt(str, "SO ", map->t);
 	else if (str[0] && str[0] == 'N')

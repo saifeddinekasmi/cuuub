@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 22:27:20 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/02/08 01:42:56 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_check_line_rgb(const char *str)
 	return (0);
 }
 
-int	ft_check_rgb_error_f(char *line, t_rgb t)
+int	ft_check_rgb_error_f(char *line, t_map 	*t)
 {
 	char	**rgb;
 	int		i;
@@ -39,9 +39,9 @@ int	ft_check_rgb_error_f(char *line, t_rgb t)
 		rgb = ft_split(line, ',');
 		if (check(rgb[0]) == 0 && check(rgb[1]) == 0 && check(rgb[2]) == 0)
 		{
-			t.r_F = ft_atoi(rgb[0]);
-			t.g_F = ft_atoi(rgb[1]);
-			t.b_F = ft_atoi(rgb[2]);
+			t->r_f = ft_atoi(rgb[0]);
+			t->g_f = ft_atoi(rgb[1]);
+			t->b_f = ft_atoi(rgb[2]);
 		}
 		else
 		{
@@ -49,14 +49,14 @@ int	ft_check_rgb_error_f(char *line, t_rgb t)
 			return (1);
 		}
 		ft_free(rgb);
-		if ((t.r_F >= 0 && t.r_F <= 255) && (t.g_F >= 0 && t.g_F <= 255)
-			&& (t.b_F >= 0 && t.b_F <= 255))
+		if ((t->r_f >= 0 && t->r_f <= 255) && (t->g_f >= 0 && t->g_f <= 255)
+			&& (t->b_f >= 0 && t->b_f <= 255))
 			return (0);
 	}
 	return (1);
 }
 
-int	ft_check_rgb_error_c(char *line, t_rgb t)
+int	ft_check_rgb_error_c(char *line, t_map	*map)
 {
 	char	**rgb;
 	int		i;
@@ -68,9 +68,9 @@ int	ft_check_rgb_error_c(char *line, t_rgb t)
 		rgb = ft_split(line, ',');
 		if (check(rgb[0]) == 0 && check(rgb[1]) == 0 && check(rgb[2]) == 0)
 		{
-			t.r_C = ft_atoi(rgb[0]);
-			t.g_C = ft_atoi(rgb[1]);
-			t.b_C = ft_atoi(rgb[2]);
+			map->r_c = ft_atoi(rgb[0]);
+			map->g_c = ft_atoi(rgb[1]);
+			map->b_c = ft_atoi(rgb[2]);
 		}
 		else
 		{
@@ -78,35 +78,31 @@ int	ft_check_rgb_error_c(char *line, t_rgb t)
 			return (1);
 		}
 		ft_free(rgb);
-		if ((t.r_C >= 0 && t.r_C <= 255) && (t.g_C >= 0 && t.g_C <= 255)
-			&& (t.b_C >= 0 && t.b_C <= 255))
+		if ((map->r_c >= 0 && map->r_c <= 255) && (map->g_c >= 0 && map->g_c <= 255)
+			&& (map->b_c >= 0 && map->b_c <= 255))
 			return (0);
 	}
 	return (1);
 }
 
-void	ft_check_color2(char *line)
+void	ft_check_color2(char *line, t_map	*map)
 {
 	char	*file;
-	t_rgb	t;
 
-	ft_memset(&t, 0, sizeof(t));
 	file = ft_strdup(line);
-	if (ft_check_rgb_error_c(file, t) == 1)
+	if (ft_check_rgb_error_c(file, map) == 1)
 	{
 		printf("ERROR rgb color\n");
 		exit(1);
 	}
 }
 
-void	ft_check_color(char *line)
+void	ft_check_color(char *line, t_map	*map)
 {
 	char	*file;
-	t_rgb	t;
 
-	ft_memset(&t, 0, sizeof(t));
 	file = ft_strdup(line);
-	if (ft_check_rgb_error_f(file, t) == 1)
+	if (ft_check_rgb_error_f(file, map) == 1)
 	{
 		printf("ERROR rgb color\n");
 		exit(1);
